@@ -1,1 +1,1 @@
-# ru-liga-food-serivce
+# ru-liga-food-service
