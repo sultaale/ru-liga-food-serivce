@@ -6,17 +6,19 @@
     <parent>
         <groupId>ru.liga</groupId>
         <artifactId>food-service</artifactId>
-        <version>1.0-SNAPSHOT</version>
+        <version>0.0.1-SNAPSHOT</version>
     </parent>
 
     <artifactId>dependency_bom</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>dependency_bom</name>
     <description>dependency_bom</description>
+    <packaging>pom</packaging>
 
     <properties>
         <spring.version>2.7.16</spring.version>
         <mybatis.version>3.0.2</mybatis.version>
+        <shakeayaml.version>2.0</shakeayaml.version>
         <java.version>11</java.version>
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
@@ -28,7 +30,7 @@
         <dependency>
             <groupId>org.yaml</groupId>
             <artifactId>snakeyaml</artifactId>
-            <version>2.0</version>
+            <version>${shakeayaml.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -71,6 +73,7 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
+            <version>${spring.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
