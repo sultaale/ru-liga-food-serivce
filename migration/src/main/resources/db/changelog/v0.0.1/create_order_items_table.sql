@@ -13,10 +13,10 @@ CREATE TABLE IF NOT EXISTS order_items
     REFERENCES restaurant_menu_items (id)
     );
 
-    comment on table order_items is 'Детали заказа';
-    comment on column order_items.id is 'Индентификатор деталей заказа';
-    comment on column order_items.order_id is 'Индентификатор заказа';
-    comment on column order_items.restaurant_menu_item_id is 'Индентификатор меню';
-    comment on column order_items.price is 'Стоимость заказа';
-    comment on column order_items.quantity is 'Количество блюд';
+    comment on table order_items is 'Р”РµС‚Р°Р»Рё Р·Р°РєР°Р·Р°';
+    comment on column order_items.id is 'РРЅРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ РґРµС‚Р°Р»РµР№ Р·Р°РєР°Р·Р°';
+    comment on column order_items.order_id is 'РРЅРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ Р·Р°РєР°Р·Р°';
+    comment on column order_items.restaurant_menu_item_id is 'РРЅРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ РјРµРЅСЋ';
+    comment on column order_items.price is 'РЎС‚РѕРёРјРѕСЃС‚СЊ Р·Р°РєР°Р·Р°';
+    comment on column order_items.quantity is 'РљРѕР»РёС‡РµСЃС‚РІРѕ Р±Р»СЋРґ';
 
