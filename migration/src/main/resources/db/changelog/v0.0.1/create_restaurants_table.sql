@@ -6,7 +6,7 @@ CREATE TABLE IF NOT EXISTS restaurants
     CONSTRAINT restaurants_pkey PRIMARY KEY (id)
     );
 
-    comment on table restaurants is 'Данные ресторана';
-    comment on column restaurants.id is 'Индентификатор ресторана';
-    comment on column restaurants.address is 'Адрес ресторана';
-    comment on column restaurants.status is 'Статус заказа';
+    comment on table restaurants is 'Р”Р°РЅРЅС‹Рµ СЂРµСЃС‚РѕСЂР°РЅР°';
+    comment on column restaurants.id is 'РРЅРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ СЂРµСЃС‚РѕСЂР°РЅР°';
+    comment on column restaurants.address is 'РђРґСЂРµСЃ СЂРµСЃС‚РѕСЂР°РЅР°';
+    comment on column restaurants.status is 'РЎС‚Р°С‚СѓСЃ Р·Р°РєР°Р·Р°';

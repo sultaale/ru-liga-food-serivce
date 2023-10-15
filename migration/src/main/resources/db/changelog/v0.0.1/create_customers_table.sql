@@ -8,7 +8,7 @@ CREATE TABLE IF NOT EXISTS customers
     CONSTRAINT customers_pkey PRIMARY KEY (id)
     );
 
-    comment on table customers is 'Данные заказчика';
-    comment on column customers.id is 'Индентификатор заказчика';
-    comment on column customers.phone is 'Телефон заказчика';
-    comment on column customers.email is 'Адрес заказчика';
+    comment on table customers is 'Р”Р°РЅРЅС‹Рµ Р·Р°РєР°Р·С‡РёРєР°';
+    comment on column customers.id is 'РРЅРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ Р·Р°РєР°Р·С‡РёРєР°';
+    comment on column customers.phone is 'РўРµР»РµС„РѕРЅ Р·Р°РєР°Р·С‡РёРєР°';
+    comment on column customers.email is 'РђРґСЂРµСЃ Р·Р°РєР°Р·С‡РёРєР°';

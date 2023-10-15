@@ -15,10 +15,10 @@ CREATE TABLE IF NOT EXISTS orders
     REFERENCES restaurants (id)
     );
 
-    comment on table orders is 'Информация о заказе';
-    comment on column orders.id is 'Индентификатор заказа';
-    comment on column orders.customer_id is 'Индентификатор заказчика';
-    comment on column orders.restaurant_id is 'Индентификатор ресторана';
-    comment on column orders.courier_id is 'Индентификатор курьера';
-    comment on column orders.status is 'Статус заказа';
-    comment on column orders.timestamp is 'Дата создания заказа';
+    comment on table orders is 'РРЅС„РѕСЂРјР°С†РёСЏ Рѕ Р·Р°РєР°Р·Рµ';
+    comment on column orders.id is 'РРЅРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ Р·Р°РєР°Р·Р°';
+    comment on column orders.customer_id is 'РРЅРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ Р·Р°РєР°Р·С‡РёРєР°';
+    comment on column orders.restaurant_id is 'РРЅРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ СЂРµСЃС‚РѕСЂР°РЅР°';
+    comment on column orders.courier_id is 'РРЅРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ РєСѓСЂСЊРµСЂР°';
+    comment on column orders.status is 'РЎС‚Р°С‚СѓСЃ Р·Р°РєР°Р·Р°';
+    comment on column orders.timestamp is 'Р”Р°С‚Р° СЃРѕР·РґР°РЅРёСЏ Р·Р°РєР°Р·Р°';
