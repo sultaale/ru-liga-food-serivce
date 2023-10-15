@@ -8,8 +8,8 @@ CREATE TABLE IF NOT EXISTS couriers
     CONSTRAINT couriers_pkey PRIMARY KEY (id)
     );
 
-    comment on table couriers is 'Данные курьеров';
-    comment on column couriers.id is 'Индентификатор курьера';
-    comment on column couriers.phone is 'Телефон курьер';
-    comment on column couriers.status is 'Статус доставки';
-    comment on column couriers.coordinates is 'Координаты курьера';
+    comment on table couriers is 'Р”Р°РЅРЅС‹Рµ РєСѓСЂСЊРµСЂРѕРІ';
+    comment on column couriers.id is 'РРЅРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ РєСѓСЂСЊРµСЂР°';
+    comment on column couriers.phone is 'РўРµР»РµС„РѕРЅ РєСѓСЂСЊРµСЂ';
+    comment on column couriers.status is 'РЎС‚Р°С‚СѓСЃ РґРѕСЃС‚Р°РІРєРё';
+    comment on column couriers.coordinates is 'РљРѕРѕСЂРґРёРЅР°С‚С‹ РєСѓСЂСЊРµСЂР°';

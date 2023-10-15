@@ -11,10 +11,10 @@ CREATE TABLE IF NOT EXISTS restaurant_menu_items
     REFERENCES restaurants (id)
     );
 
-    comment on table restaurant_menu_items is 'Меню ресторана';
-    comment on column restaurant_menu_items.id is 'Индентификатор меню ресторана';
-    comment on column restaurant_menu_items.restaurant_id is 'Индентификатор ресторана';
-    comment on column restaurant_menu_items.name is 'Название блюда';
-    comment on column restaurant_menu_items.price is 'Цена блюда';
-    comment on column restaurant_menu_items.image is 'Адрес картинки';
-    comment on column restaurant_menu_items.description is 'Описание блюда';
+    comment on table restaurant_menu_items is 'РњРµРЅСЋ СЂРµСЃС‚РѕСЂР°РЅР°';
+    comment on column restaurant_menu_items.id is 'РРЅРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ РјРµРЅСЋ СЂРµСЃС‚РѕСЂР°РЅР°';
+    comment on column restaurant_menu_items.restaurant_id is 'РРЅРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ СЂРµСЃС‚РѕСЂР°РЅР°';
+    comment on column restaurant_menu_items.name is 'РќР°Р·РІР°РЅРёРµ Р±Р»СЋРґР°';
+    comment on column restaurant_menu_items.price is 'Р¦РµРЅР° Р±Р»СЋРґР°';
+    comment on column restaurant_menu_items.image is 'РђРґСЂРµСЃ РєР°СЂС‚РёРЅРєРё';
+    comment on column restaurant_menu_items.description is 'РћРїРёСЃР°РЅРёРµ Р±Р»СЋРґР°';
