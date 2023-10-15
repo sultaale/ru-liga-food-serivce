@@ -4,6 +4,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import ru.liga.util.Converter;
 
 @SpringBootApplication
 public class OrderService {
@@ -16,4 +17,7 @@ public class OrderService {
 	public ModelMapper modelMapper() {
 		return new ModelMapper();
 	}
+
+	@Bean
+	public Converter converter() {return new Converter(modelMapper());}
 }
