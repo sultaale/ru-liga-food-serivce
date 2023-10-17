@@ -1,11 +1,13 @@
+create sequence if not exists restaurant_menu_items_seq;
+
 CREATE TABLE IF NOT EXISTS restaurant_menu_items
 (
-    id bigint NOT NULL GENERATED ALWAYS AS IDENTITY ( INCREMENT 1 START 1 MINVALUE 1 MAXVALUE 9223372036854775807 CACHE 1 ),
+    id bigint NOT NULL default nextval('restaurant_menu_items_seq'),
     restaurant_id bigint NOT NULL,
-    name character varying(255),
-    price bigint,
+    name character varying(255) NOT NULL,
+    price numeric default 0.00,
     image character varying(255),
-    description character varying(255),
+    description character varying(255) NOT NULL,
     CONSTRAINT restaurant_menu_items_pkey PRIMARY KEY (id),
     CONSTRAINT "FK_restaurant_restaurant_menu" FOREIGN KEY (restaurant_id)
     REFERENCES restaurants (id)

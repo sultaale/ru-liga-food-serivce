@@ -1,7 +1,8 @@
+create sequence if not exists couriers_seq;
 
 CREATE TABLE IF NOT EXISTS couriers
 (
-    id bigint NOT NULL GENERATED ALWAYS AS IDENTITY ( INCREMENT 1 START 1 MINVALUE 1 MAXVALUE 9223372036854775807 CACHE 1 ),
+    id bigint NOT NULL default nextval('couriers_seq'),
     phone character varying(14) NOT NULL,
     status character varying(15) NOT NULL,
     coordinates point NOT NULL,

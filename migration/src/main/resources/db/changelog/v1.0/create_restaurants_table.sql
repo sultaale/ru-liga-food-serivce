@@ -1,8 +1,10 @@
+create sequence if not exists restaurants_seq;
+
 CREATE TABLE IF NOT EXISTS restaurants
 (
-    id bigint NOT NULL GENERATED ALWAYS AS IDENTITY ( INCREMENT 1 START 1 MINVALUE 1 MAXVALUE 9223372036854775807 CACHE 1 ),
+    id bigint NOT NULL default nextval('restaurants_seq'),
     address character varying(255) NOT NULL,
-    status character varying(15) NOT NULL,
+    status character varying(15) default 'active',
     CONSTRAINT restaurants_pkey PRIMARY KEY (id)
     );
 

@@ -11,8 +11,6 @@
     </parent>
 
     <artifactId>migration</artifactId>
-    <name>migration</name>
-    <packaging>jar</packaging>
 
     <dependencies>
         <dependency>
@@ -34,7 +32,7 @@
                 <version>4.9.1</version>
                 <configuration>
                     <changelogSchemaName>public</changelogSchemaName>
-                    <propertyFile>/src/main/resources/db/local/liquibase.properties</propertyFile>
+                    <propertyFile>src/main/resources/db/local/liquibase.properties</propertyFile>
                     <changeLogFile>src/main/resources/db/master.xml</changeLogFile>
                     <dataDir>src/main/resources/db/local/data</dataDir>
                     <verbose>false</verbose>

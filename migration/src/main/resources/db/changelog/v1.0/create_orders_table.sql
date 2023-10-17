@@ -1,10 +1,12 @@
+create sequence if not exists orders_seq;
+
 CREATE TABLE IF NOT EXISTS orders
 (
-    id bigint NOT NULL GENERATED ALWAYS AS IDENTITY ( INCREMENT 1 START 1 MINVALUE 1 MAXVALUE 9223372036854775807 CACHE 1 ),
+    id bigint NOT NULL default nextval('orders_seq'),
     customer_id bigint NOT NULL,
     restaurant_id bigint NOT NULL,
     courier_id bigint NOT NULL,
-    status character varying(15) NOT NULL,
+    status character varying(15) default 'active',
     "timestamp" timestamp with time zone default now(),
                               CONSTRAINT orders_pkey PRIMARY KEY (id),
     CONSTRAINT "FK_orders_courier" FOREIGN KEY (courier_id)
