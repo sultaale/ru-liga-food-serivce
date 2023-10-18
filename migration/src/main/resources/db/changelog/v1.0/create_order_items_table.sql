@@ -4,8 +4,8 @@ CREATE TABLE IF NOT EXISTS order_items
 (
     id bigint NOT NULL default nextval('order_items_seq'),
     order_id bigint NOT NULL,
-    restaurant_menu_item_id bigint NOT NULL UNIQUE,
-    price numeric default 0.00,
+    restaurant_menu_item_id bigint NOT NULL,
+    price numeric(10,2) default 0.00,
     quantity integer default 0,
     CONSTRAINT order_items_pkey PRIMARY KEY (id),
     CONSTRAINT "FK_order_items_order" FOREIGN KEY (order_id)

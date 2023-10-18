@@ -4,7 +4,7 @@ CREATE TABLE IF NOT EXISTS restaurants
 (
     id bigint NOT NULL default nextval('restaurants_seq'),
     address character varying(255) NOT NULL,
-    status character varying(15) default 'active',
+    status character varying(25),
     CONSTRAINT restaurants_pkey PRIMARY KEY (id)
     );
 

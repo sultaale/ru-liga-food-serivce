@@ -6,7 +6,7 @@ CREATE TABLE IF NOT EXISTS orders
     customer_id bigint NOT NULL,
     restaurant_id bigint NOT NULL,
     courier_id bigint NOT NULL,
-    status character varying(15) default 'active',
+    status character varying(25) default 'CUSTOMER_CREATED',
     "timestamp" timestamp with time zone default now(),
                               CONSTRAINT orders_pkey PRIMARY KEY (id),
     CONSTRAINT "FK_orders_courier" FOREIGN KEY (courier_id)

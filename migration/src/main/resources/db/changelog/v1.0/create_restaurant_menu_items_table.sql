@@ -5,7 +5,7 @@ CREATE TABLE IF NOT EXISTS restaurant_menu_items
     id bigint NOT NULL default nextval('restaurant_menu_items_seq'),
     restaurant_id bigint NOT NULL,
     name character varying(255) NOT NULL,
-    price numeric default 0.00,
+    price numeric(10,2) default 0.00,
     image character varying(255),
     description character varying(255) NOT NULL,
     CONSTRAINT restaurant_menu_items_pkey PRIMARY KEY (id),
