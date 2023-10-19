@@ -6,3 +6,23 @@ management:
         endpoint:
           health:
             show-details: ALWAYS
+
+            spring:
+              jpa:
+                hibernate:
+                  ddl-auto: none
+                database-platform: org.hibernate.dialect.PostgreSQLDialect
+                properties:
+                  hibernate:
+                    format_sql: 'true'
+                  org:
+                    hibernate:
+                      envers:
+                        revision_field_name: rev_id
+                        revision_type_field_name: rev_type
+                show-sql: 'true'
+              datasource:
+                driver_class_name: org.postgresql.Driver
+                datasource.password: 'postgres'
+                url: jdbc:postgresql://localhost:32768/postgres
+                username: 'postgres'
