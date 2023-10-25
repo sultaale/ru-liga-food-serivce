@@ -1,14 +1,15 @@
 package ru.liga.services;
 
-import ru.liga.models.Customer;
+import ru.liga.dto.CustomerDTO;
 
 import java.util.List;
 
+
 public interface CustomerService {
+    CustomerDTO getById(Long id);
 
-    Customer getById(Long id);
+    CustomerDTO getByPhone(String phone);
 
-    Customer getByPhone(String phone);
+    List<CustomerDTO> getAllCustomers();
 
-    List<Customer> getAllCustomers();
 }

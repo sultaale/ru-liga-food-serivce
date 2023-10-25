@@ -1,14 +1,12 @@
 package ru.liga.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.hibernate.annotations.ManyToAny;
-import org.springframework.lang.Nullable;
-import ru.liga.util.enums.OrderStatusEnum;
+import ru.liga.models.enums.OrderStatus;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -20,7 +18,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
-import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -47,13 +44,13 @@ public class Order {
     @ManyToOne
     @JoinColumn(name = "courier_id")
     private Courier courier;
-
-    @Column(name = "status")
+    
     @Enumerated(EnumType.STRING)
-    private OrderStatusEnum status;
+    private OrderStatus status;
 
     private LocalDateTime timestamp = LocalDateTime.now();
 
+    @JsonIgnore
     @OneToMany(mappedBy = "order")
     private List<OrderItem> items;
 }

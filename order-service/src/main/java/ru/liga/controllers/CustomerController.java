@@ -6,8 +6,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import ru.liga.models.Customer;
+import ru.liga.dto.CustomerDTO;
 import ru.liga.services.CustomerService;
+
+import java.util.List;
 
 @RequiredArgsConstructor
 @RestController
@@ -15,13 +17,18 @@ import ru.liga.services.CustomerService;
 public class CustomerController {
     private final CustomerService customerService;
 
+    @GetMapping
+    public List<CustomerDTO> getAll() {
+        return customerService.getAllCustomers();
+    }
+
     @GetMapping("/{id}")
-    public Customer getCustomerById(@PathVariable("id") Long id) {
+    public CustomerDTO getById(@PathVariable Long id) {
         return customerService.getById(id);
     }
 
     @GetMapping("/phone/{phone}")
-    public Customer getCustomerByPhone(@PathVariable("phone") String phone) {
+    public CustomerDTO getByPhone(@PathVariable String phone) {
         return customerService.getByPhone(phone);
     }
 }

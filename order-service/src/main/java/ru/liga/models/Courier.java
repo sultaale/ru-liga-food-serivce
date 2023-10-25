@@ -24,8 +24,11 @@ public class Courier {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "courier_seq_gen")
     @SequenceGenerator(name = "courier_seq_gen", sequenceName = "couriers_seq", allocationSize = 1)
     private Long id;
+
     private String phone;
+
     private String status;
+
     @Type(type = "type")
     private PGpoint coordinates;
 

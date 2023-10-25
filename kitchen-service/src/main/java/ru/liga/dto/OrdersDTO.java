@@ -7,7 +7,7 @@ import java.util.List;
 
 @Data
 public class OrdersDTO {
-    private List<OrderDTO> orders;
+    private List<OrderCreationDTO> orders;
     @JsonProperty("page_index")
     private int pageIndex;
     @JsonProperty("page_count")

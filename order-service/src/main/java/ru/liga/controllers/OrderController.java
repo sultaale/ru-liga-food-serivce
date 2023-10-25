@@ -1,5 +1,7 @@
 package ru.liga.controllers;
 
+import lombok.RequiredArgsConstructor;
+import org.modelmapper.ModelMapper;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,44 +16,47 @@ import ru.liga.dto.OrdersDTO;
 import ru.liga.dto.RestaurantDTO;
 import ru.liga.models.Order;
 import ru.liga.models.OrderItem;
+import ru.liga.services.OrderService;
 import ru.liga.util.Converter;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@RequiredArgsConstructor
 @RestController
 @RequestMapping("/api/v1/orders")
 public class OrderController {
-    private final Converter converter;
+    private final OrderService orderService;
 
-    public OrderController(Converter converter) {
-        this.converter = converter;
+    @GetMapping("/status/{status}")
+    public List<Order> getByStatus(@PathVariable String status) {
+       return orderService.getByStatus(status);
+     }
+
+    @GetMapping("restaurants/{id}")
+    public Order getAllOrders(@PathVariable Long id){
+
+//
+//        OrdersDTO orders = new OrdersDTO();
+//        OrderDTO orderDTO = new OrderDTO();
+//        orderDTO.setId(1L);
+//        orderDTO.setRestaurant(new RestaurantDTO());
+//        orderDTO.setItems(new ArrayList<>());
+//        orders.setOrders(List.of(orderDTO));
+
+        return orderService.findByRestaurantId(id).orElse(null);
     }
 
-    @GetMapping("")
-    public ResponseEntity<OrdersDTO> getAllOrders(){
-
-        OrdersDTO orders = new OrdersDTO();
-        OrderDTO orderDTO = new OrderDTO();
-        orderDTO.setId(1L);
-        orderDTO.setRestaurant(new RestaurantDTO());
-        orderDTO.setItems(new ArrayList<>());
-        orders.setOrders(List.of(orderDTO));
-
-        return ResponseEntity.ok(orders);
-    }
+    
 
     @GetMapping("/{id}")
-    public ResponseEntity<OrderDTO> getOrderById(@PathVariable("id") Long id) {
-
-        OrderDTO orderDTO = converter.toDTO(new Order());
-
-        return ResponseEntity.ok(orderDTO);
+    public Order getOrderById(@PathVariable Long id) {
+        return orderService.findById(id).orElse(null);
     }
 
-    @PostMapping("/order")
+    @PostMapping()
     public ResponseEntity<OrderCreationResponseDTO> order(@RequestBody OrderCreationDTO orderCreationDTO) {
-
+        Converter converter = new Converter(new ModelMapper());
         OrderItem orderItem = converter.toEntity(orderCreationDTO);
         OrderCreationResponseDTO orderCreationResponseDTO = new OrderCreationResponseDTO();
 

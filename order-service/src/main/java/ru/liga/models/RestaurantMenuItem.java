@@ -20,6 +20,7 @@ import javax.persistence.Table;
 @AllArgsConstructor
 @Setter
 @Getter
+
 @Table(name = "restaurant_menu_items")
 public class RestaurantMenuItem {
     @Id
@@ -38,7 +39,4 @@ public class RestaurantMenuItem {
     private String image;
 
     private String description;
-
-    @OneToOne(mappedBy = "restaurantMenuItem")
-    private OrderItem orderItem;
 }

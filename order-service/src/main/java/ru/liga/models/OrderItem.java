@@ -32,10 +32,11 @@ public class OrderItem {
     private Order order;
 
     @OneToOne
-    @JoinColumn(name = "restaurant_menu_item_id")
+    @JoinColumn(name = "restaurant_menu_item_id", referencedColumnName = "id")
     private RestaurantMenuItem restaurantMenuItem;
 
     private Double price;
     
     private Integer quantity;
+
 }
