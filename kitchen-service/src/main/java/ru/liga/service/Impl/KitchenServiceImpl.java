@@ -1,6 +1,7 @@
 package ru.liga.service.Impl;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.liga.clients.KitchenClient;
@@ -15,6 +16,7 @@ import ru.liga.service.KitchenService;
 public class KitchenServiceImpl implements KitchenService {
     private final KitchenClient kitchenClient;
     private final OrderRepository orderRepository;
+    private final RabbitTemplate rabbitTemplate;
 
     @Transactional
     @Override
@@ -22,4 +24,9 @@ public class KitchenServiceImpl implements KitchenService {
         StatusUpdateDTO statusUpdateDTO = StatusUpdateDTO.builder().id(orderId).status(OrderStatus.KITCHEN_ACCEPTED.toString()).build();
         kitchenClient.updateStatus(statusUpdateDTO);
     }
+
+     @Override
+     public void completeOrder(Long orderId, String routingKey) {
+        rabbitTemplate.convertAndSend("directExchange", routingKey, orderId);
+     }
 }
