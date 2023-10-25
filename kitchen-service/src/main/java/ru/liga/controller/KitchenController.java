@@ -17,9 +17,9 @@ import ru.liga.service.KitchenService;
 public class KitchenController {
     private final KitchenService kitchenService;
 
-    @PatchMapping("/orders/{id}")
-    public void updateOrder(@PathVariable Long id) {
-        kitchenService.assignCourier(id);
+    @PostMapping("/orders/{id}")
+    public void updateOrder(@PathVariable long id) {
+        kitchenService.updateStatus(id);
     }
     
 }

@@ -4,9 +4,11 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import ru.liga.dto.CourierDTO;
+import ru.liga.dto.StatusUpdateDTO;
 import ru.liga.services.CourierService;
 
 
@@ -32,5 +34,10 @@ public class DeliveryController {
     @PostMapping("/couriers/status/{id}")
     public CourierDTO updateStatus(@PathVariable Long id, String statusUpdateDTO) {
        return courierService.updateStatus(id, statusUpdateDTO);
+    }
+
+    @PostMapping("/couriers/orders/status")
+    public void updateStatus(@RequestBody StatusUpdateDTO statusUpdateDTO) {
+         courierService.acceptOrder(statusUpdateDTO);
     }
 }

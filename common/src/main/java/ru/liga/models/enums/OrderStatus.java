@@ -1,7 +1,6 @@
 package ru.liga.models.enums;
 
 public enum OrderStatus {
-
     CUSTOMER_CREATED,
 
     CUSTOMER_PAID,

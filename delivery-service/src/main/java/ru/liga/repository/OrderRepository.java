@@ -9,7 +9,7 @@ import ru.liga.models.enums.OrderStatus;
 import java.util.List;
 import java.util.Optional;
 
-public interface OrderRepository extends JpaRepository {
+public interface OrderRepository extends JpaRepository<Order, Long> {
 
     List<Order> findAllByStatus(OrderStatus orderStatus, Pageable page);
 

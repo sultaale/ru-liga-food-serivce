@@ -12,9 +12,10 @@ import ru.liga.dto.OrdersDTO;
 public class RestaurantController {
 
     @GetMapping("/orders")
-    public ResponseEntity<OrdersDTO> getOrdersByStatus(@RequestParam String status) {
+    public OrdersDTO getOrdersByStatus(@RequestParam String status) {
         OrdersDTO ordersDTO = new OrdersDTO();
 
-        return ResponseEntity.ok(ordersDTO);
+        return ordersDTO;
     }
+
 }

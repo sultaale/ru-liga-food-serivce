@@ -20,20 +20,9 @@ import java.util.List;
 public class CourierController {
     private final CourierService courierService;
 
-    @GetMapping("/status/{status}")
-    public CourierDTO getByStatus(@PathVariable String status) {
-         return courierService.findByStatus(status);
-    }
 
-    @GetMapping()
-    public List<CourierDTO> getAll() {
-        return courierService.getAllCouriers();
-    }
-
-    @ResponseStatus
     @PatchMapping ("/{id}")
     public void updateStatus(@PathVariable Long id, @RequestBody StatusUpdateDTO status) {
         courierService.updateStatus(id, status);
-
     }
 }

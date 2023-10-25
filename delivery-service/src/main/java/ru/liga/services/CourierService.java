@@ -17,5 +17,5 @@ public interface CourierService {
 
     CourierDTO updateStatus(Long id, String status);
 
-    void updateStatusOrder(Long id, StatusUpdateDTO statusUpdateDTO);
+    void acceptOrder(StatusUpdateDTO statusUpdateDTO);
 }

@@ -7,6 +7,7 @@ import ru.liga.dto.CourierDTO;
 import ru.liga.dto.StatusUpdateDTO;
 import ru.liga.exceptions.CourierNotFoundException;
 import ru.liga.exceptions.OrderNotFoundException;
+import ru.liga.exceptions.StatusIsNotValidException;
 import ru.liga.models.Courier;
 
 import ru.liga.models.Order;
@@ -69,17 +70,19 @@ public class CourierServiceImpl implements CourierService {
 
     @Transactional
     @Override
-    public void updateStatusOrder(Long id, StatusUpdateDTO statusUpdateDTO) {
-        Order order = orderRepository.findById(id)
-                .orElseThrow(() -> new OrderNotFoundException(id));
+    public void acceptOrder(StatusUpdateDTO statusUpdateDTO) {
+        Long orderId = statusUpdateDTO.getId();
+        Order order = orderRepository.findById(orderId)
+                .orElseThrow(()->new OrderNotFoundException(orderId));
 
         String status = statusUpdateDTO.getStatus();
         Optional<OrderStatus> newStatus = Arrays.stream(OrderStatus.values())
-                .filter(s -> s.name().equalsIgnoreCase(status)).findAny();
+                .filter(s -> s.toString().equalsIgnoreCase(status)).findAny();
         if (newStatus.isPresent()) {
             order.setStatus(newStatus.get());
             orderRepository.save(order);
-        }
+        } else {
+        throw new StatusIsNotValidException("Status is not valid"); }
     }
 
 }

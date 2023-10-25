@@ -17,8 +17,8 @@
 
     <properties>
         <spring.version>2.7.16</spring.version>
-        <spring-cloud.version>4.0.4</spring-cloud.version>
-        <mybatis.version>3.0.2</mybatis.version>
+        <spring-cloud.version>3.1.8</spring-cloud.version>
+        <mybatis.version>2.2.2</mybatis.version>
         <shakeayaml.version>2.0</shakeayaml.version>
         <java.version>11</java.version>
         <maven.compiler.source>11</maven.compiler.source>
@@ -68,7 +68,6 @@
             <artifactId>spring-cloud-starter-openfeign</artifactId>
             <version>${spring-cloud.version}</version>
         </dependency>
-
         <dependency>
             <groupId>org.liquibase</groupId>
             <artifactId>liquibase-core</artifactId>
