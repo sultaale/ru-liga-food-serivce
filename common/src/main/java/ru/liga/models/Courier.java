@@ -7,6 +7,7 @@ import org.hibernate.annotations.TypeDef;
 import org.postgresql.geometric.PGpoint;
 import ru.liga.utils.PGPointType;
 
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;

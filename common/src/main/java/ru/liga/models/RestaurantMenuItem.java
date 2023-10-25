@@ -11,32 +11,32 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-@Getter
 @Setter
-@Table(name = "order_items")
-public class OrderItem {
+@Getter
+@Table(name = "restaurant_menu_items")
+public class RestaurantMenuItem {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "order_items_seq_gen")
-    @SequenceGenerator(name = "order_items_seq_gen", sequenceName = "order_items_seq", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "rest_menu_items_seq_gen")
+    @SequenceGenerator(name = "rest_menu_items_seq_gen", sequenceName = "restaurant_menu_items_seq", allocationSize = 1)
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "order_id")
-    private Order order;
+    @JoinColumn(name = "restaurant_id")
+    private Restaurant restaurant;
 
-    @OneToOne
-    @JoinColumn(name = "restaurant_menu_item_id", referencedColumnName = "id")
-    private RestaurantMenuItem restaurantMenuItem;
+    private String name;
 
     private Double price;
-    
-    private Integer quantity;
+
+    private String image;
+
+    private String description;
+
 
 }

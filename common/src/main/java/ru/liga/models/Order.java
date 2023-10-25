@@ -1,6 +1,5 @@
 package ru.liga.models;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -50,7 +49,6 @@ public class Order {
 
     private LocalDateTime timestamp = LocalDateTime.now();
 
-    @JsonIgnore
     @OneToMany(mappedBy = "order")
     private List<OrderItem> items;
 }

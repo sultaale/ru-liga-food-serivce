@@ -38,5 +38,4 @@ public class OrderItem {
     private Double price;
     
     private Integer quantity;
-
 }
