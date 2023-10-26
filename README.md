@@ -1,1 +1,4 @@
-# ru-liga-food-serivce
+# ru-liga-food-service
+
+Added migration folder, scripts.
+
