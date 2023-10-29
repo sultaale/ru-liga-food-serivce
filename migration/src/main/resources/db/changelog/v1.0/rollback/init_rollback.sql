@@ -2,7 +2,6 @@
 drop table if exists order_items cascade;
 drop sequence if exists order_items_seq;
 
-
 drop table if exists restaurant_menu_items cascade;
 drop sequence if exists restaurant_menu_items_seq;
 

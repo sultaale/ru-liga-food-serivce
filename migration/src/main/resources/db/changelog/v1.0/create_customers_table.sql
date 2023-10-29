@@ -5,7 +5,7 @@ CREATE TABLE IF NOT EXISTS customers
     id bigint NOT NULL default nextval('customers_seq'),
     phone character varying(15) NOT NULL,
     email character varying(50) NOT NULL,
-    address character varying(255) NOT NULL,
+    address character varying(25) NOT NULL,
     CONSTRAINT customers_pkey PRIMARY KEY (id)
     );
 

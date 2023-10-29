@@ -5,7 +5,7 @@ CREATE TABLE IF NOT EXISTS couriers
     id bigint NOT NULL default nextval('couriers_seq'),
     phone character varying(15) NOT NULL,
     status character varying(25) NOT NULL,
-    coordinates point NOT NULL,
+    coordinates character varying(25) NOT NULL,
     CONSTRAINT couriers_pkey PRIMARY KEY (id)
     );
 

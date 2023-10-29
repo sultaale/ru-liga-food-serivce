@@ -3,7 +3,8 @@ create sequence if not exists restaurants_seq;
 CREATE TABLE IF NOT EXISTS restaurants
 (
     id bigint NOT NULL default nextval('restaurants_seq'),
-    address character varying(255) NOT NULL,
+    name character varying(255) NOT NULL,
+    address character varying(25) NOT NULL,
     status character varying(25),
     CONSTRAINT restaurants_pkey PRIMARY KEY (id)
     );
