@@ -47,7 +47,7 @@ public class Order {
     @Enumerated(EnumType.STRING)
     private OrderStatus status;
 
-    private LocalDateTime timestamp = LocalDateTime.now();
+    private LocalDateTime timestamp;
 
     @OneToMany(mappedBy = "order")
     private List<OrderItem> items;

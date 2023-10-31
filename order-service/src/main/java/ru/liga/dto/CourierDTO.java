@@ -8,5 +8,5 @@ public class CourierDTO {
     private Long id;
     private String phone;
     private String status;
-    private PGpoint coordinates;
+    private String coordinates;
 }

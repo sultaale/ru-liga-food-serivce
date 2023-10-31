@@ -24,6 +24,8 @@ public class Restaurant {
     @SequenceGenerator(name = "restaurant_seq_gen", sequenceName = "restaurants_seq", allocationSize = 1)
     private Long id;
 
+    private String name;
+
     private String address;
 
     private String status;

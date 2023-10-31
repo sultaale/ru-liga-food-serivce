@@ -50,6 +50,18 @@ public class Order {
 
     private LocalDateTime timestamp = LocalDateTime.now();
 
+    @Override
+    public String toString() {
+        return "Order{" +
+                "id=" + id +
+                ", customer=" + customer +
+                ", restaurant=" + restaurant +
+                ", courier=" + courier +
+                ", status=" + status +
+                ", timestamp=" + timestamp +
+                '}';
+    }
+
     @JsonIgnore
     @OneToMany(mappedBy = "order")
     private List<OrderItem> items;

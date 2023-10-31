@@ -11,5 +11,5 @@ public class OrderDTO {
     private RestaurantDTO restaurantDTO;
     @JsonProperty("customer")
     private CustomerDTO customerDTO;
-    private Long payment;
+    private Double payment;
 }

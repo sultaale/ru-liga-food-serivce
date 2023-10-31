@@ -7,6 +7,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import ru.liga.util.Converter;
+import ru.liga.util.LocalDateTimeTypeHandler;
 
 import java.sql.Connection;
 

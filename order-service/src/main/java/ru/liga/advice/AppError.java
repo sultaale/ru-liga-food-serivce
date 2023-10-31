@@ -16,4 +16,8 @@ public class AppError {
     private int statusCode;
     private String message;
     private LocalDateTime time;
+
+    public AppError(int statusCode){
+        this.statusCode = statusCode;
+    }
 }

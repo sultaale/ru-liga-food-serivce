@@ -1,8 +1,10 @@
 package ru.liga.services;
 
 
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
+import ru.liga.dto.OrderCreationDTO;
+import ru.liga.dto.OrderCreationResponseDTO;
+import ru.liga.dto.OrderDTO;
+import ru.liga.dto.OrdersDTO;
 import ru.liga.models.Order;
 
 import java.util.List;
@@ -10,10 +12,10 @@ import java.util.Optional;
 
 public interface OrderService {
 
-    Optional<Order> findById(Long id);
+    OrderDTO getById(Long id);
     Optional<Order> findByRestaurantId(Long id);
-    List<Order> getByStatus(String status);
-    Order getOrderById(Long id);
-    List<Order> getAll();
+    List<Long> getByStatus(String status);
+    OrderCreationResponseDTO createOrder(Long customerId,OrderCreationDTO orderCreationDTO);
+    OrdersDTO getAll();
 
 }
