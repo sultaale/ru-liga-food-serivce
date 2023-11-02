@@ -62,10 +62,8 @@
 			<scope>compile</scope>
 		</dependency>
 		<dependency>
-			<groupId>ru.liga</groupId>
-			<artifactId>delivery-service</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-			<scope>compile</scope>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
 		</dependency>
 	</dependencies>
 

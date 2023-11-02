@@ -1,21 +1,14 @@
-package ru.liga.util;
+package ru.liga.utils;
 
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
-import ru.liga.batisMapper.OrderItemMapper;
 import ru.liga.dto.CourierDTO;
 import ru.liga.dto.CustomerDTO;
-import ru.liga.dto.OrderDTO;
 import ru.liga.dto.OrderItemDTO;
-import ru.liga.dto.RestaurantDTO;
 import ru.liga.dto.RestaurantMenuItemInOrderItemDTO;
 import ru.liga.models.Courier;
 import ru.liga.models.Customer;
-import ru.liga.models.Order;
 import ru.liga.models.OrderItem;
-
-import java.util.List;
-import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 public class Converter {
