@@ -2,11 +2,6 @@ package ru.liga.models;
 
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.Type;
-import org.hibernate.annotations.TypeDef;
-import org.postgresql.geometric.PGpoint;
-import ru.liga.utils.PGPointType;
-
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -18,7 +13,6 @@ import javax.persistence.Table;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-@TypeDef(name = "type", typeClass = PGPointType.class)
 @Table(name = "couriers")
 public class Courier {
     @Id
@@ -30,8 +24,7 @@ public class Courier {
 
     private String status;
 
-    @Type(type = "type")
-    private PGpoint coordinates;
+    private String coordinates;
 
     public Long getId() {
         return id;
@@ -57,11 +50,11 @@ public class Courier {
         this.status = status;
     }
 
-    public PGpoint getCoordinates() {
+    public String getCoordinates() {
         return coordinates;
     }
 
-    public void setCoordinates(PGpoint coordinates) {
+    public void setCoordinates(String coordinates) {
         this.coordinates = coordinates;
     }
 }

@@ -6,7 +6,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.liga.dto.MenuCreationDTO;
-import ru.liga.dto.RestaurantMenuItemDTO;
 import ru.liga.exceptions.InvalidPropertyException;
 import ru.liga.exceptions.RestaurantMenuException;
 import ru.liga.exceptions.RestaurantNotFoundException;
@@ -15,10 +14,8 @@ import ru.liga.models.RestaurantMenuItem;
 import ru.liga.repository.RestaurantMenuRepository;
 import ru.liga.repository.RestaurantRepository;
 import ru.liga.services.RestaurantMenuService;
-import ru.liga.util.Converter;
 
 import javax.validation.Valid;
-import java.util.InvalidPropertiesFormatException;
 
 @Slf4j
 @Service

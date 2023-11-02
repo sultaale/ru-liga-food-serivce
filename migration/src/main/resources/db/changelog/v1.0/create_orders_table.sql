@@ -5,7 +5,7 @@ CREATE TABLE IF NOT EXISTS orders
     id bigint NOT NULL default nextval('orders_seq'),
     customer_id bigint NOT NULL,
     restaurant_id bigint NOT NULL,
-    courier_id bigint NOT NULL,
+    courier_id bigint default NULL,
     status character varying(25) default 'CUSTOMER_CREATED',
     "timestamp" timestamp with time zone default now(),
                               CONSTRAINT orders_pkey PRIMARY KEY (id),

@@ -26,4 +26,14 @@ public class Customer {
     private String phone;
     private String email;
     private String address;
+
+    @Override
+    public String toString() {
+        return "Customer{" +
+                "id=" + id +
+                ", phone='" + phone + '\'' +
+                ", email='" + email + '\'' +
+                ", address='" + address + '\'' +
+                '}';
+    }
 }

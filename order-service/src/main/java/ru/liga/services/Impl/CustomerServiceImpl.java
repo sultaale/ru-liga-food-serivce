@@ -8,7 +8,7 @@ import ru.liga.exceptions.CustomerNotFoundException;
 import ru.liga.models.Customer;
 import ru.liga.repository.CustomerRepository;
 import ru.liga.services.CustomerService;
-import ru.liga.util.Converter;
+import ru.liga.utils.Converter;
 
 import java.util.List;
 import java.util.stream.Collectors;

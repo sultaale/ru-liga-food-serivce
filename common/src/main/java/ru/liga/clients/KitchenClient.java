@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import ru.liga.dto.StatusUpdateDTO;
 
 
-
 @FeignClient(name = "kitchen-client", url = "http://localhost:8083")
 public interface KitchenClient {
 

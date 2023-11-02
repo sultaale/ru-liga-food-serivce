@@ -1,22 +1,20 @@
-package ru.liga.controllers;
+package ru.liga.controller;
 
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import ru.liga.dto.MenuCreationDTO;
 import ru.liga.models.RestaurantMenuItem;
-import ru.liga.services.RestaurantMenuService;
+import ru.liga.service.RestaurantMenuService;
 
 import javax.validation.Valid;
 
@@ -32,7 +30,7 @@ public class RestaurantMenuController {
          return restaurantMenuService.getById(id);
      }
 
-     @PostMapping("/{id}")
+     @PutMapping("/{id}")
      public RestaurantMenuItem updatePrice(@PathVariable Long id, @RequestParam double price) {
          return restaurantMenuService.updatePrice(id, price);
      }
