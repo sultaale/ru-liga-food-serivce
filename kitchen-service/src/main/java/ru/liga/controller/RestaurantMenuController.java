@@ -1,6 +1,8 @@
 package ru.liga.controller;
 
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -19,30 +21,34 @@ import ru.liga.service.RestaurantMenuService;
 import javax.validation.Valid;
 
 @Slf4j
+@Tag(name = "Restaurant Menu", description = "Restaurant Menu API")
 @RequiredArgsConstructor
 @RestController
 @RequestMapping("/api/v1/menu")
 public class RestaurantMenuController {
      private final RestaurantMenuService restaurantMenuService;
 
+     @Operation(summary = "Получить меню по id")
      @GetMapping("/{id}")
      public RestaurantMenuItem getById(@PathVariable Long id) {
          return restaurantMenuService.getById(id);
      }
 
+     @Operation(summary = "Изменить цену блюда")
      @PutMapping("/{id}")
      public RestaurantMenuItem updatePrice(@PathVariable Long id, @RequestParam double price) {
          return restaurantMenuService.updatePrice(id, price);
      }
 
+     @Operation(summary = "Удалить меню")
      @DeleteMapping("/{id}")
      public void deleteRestaurantMenuItem(@PathVariable Long id) {
         restaurantMenuService.deleteById(id);
      }
 
+     @Operation(summary = "Добавить новое меню")
      @PostMapping()
      public void addMenu(@Valid @RequestBody MenuCreationDTO menuCreationDTO) {
          restaurantMenuService.addMenu(menuCreationDTO);
-         log.info(menuCreationDTO.getRestaurantId().toString());
     }
 }

@@ -13,6 +13,7 @@ import ru.liga.dto.OrderItemForCreationDTO;
 import ru.liga.dto.OrdersDTO;
 import ru.liga.dto.StatusUpdateDTO;
 import ru.liga.exceptions.InvalidPropertyException;
+import ru.liga.exceptions.OrderNotFoundException;
 import ru.liga.exceptions.RestaurantMenuException;
 import ru.liga.exceptions.RestaurantNotFoundException;
 import ru.liga.models.Order;
@@ -44,6 +45,7 @@ public class KitchenServiceImpl implements KitchenService {
     @Transactional
     @Override
     public void updateStatus(Long orderId) {
+        Order order = orderRepository.findById(orderId).orElseThrow(()-> new OrderNotFoundException("Order is not found, please check id and try again."));
         StatusUpdateDTO statusUpdateDTO = StatusUpdateDTO.builder().id(orderId).status(OrderStatus.KITCHEN_ACCEPTED.toString()).build();
         kitchenClient.updateStatus(statusUpdateDTO);
     }

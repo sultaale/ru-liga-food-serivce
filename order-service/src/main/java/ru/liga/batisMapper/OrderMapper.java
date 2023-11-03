@@ -11,7 +11,7 @@ import ru.liga.models.Courier;
 import ru.liga.models.Customer;
 import ru.liga.models.Order;
 import ru.liga.models.Restaurant;
-import ru.liga.util.LocalDateTimeTypeHandler;
+import ru.liga.utils.LocalDateTimeTypeHandler;
 
 import java.util.List;
 import java.util.Optional;

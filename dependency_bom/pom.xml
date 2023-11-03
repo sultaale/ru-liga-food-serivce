@@ -20,6 +20,7 @@
         <spring-cloud.version>2021.0.3</spring-cloud.version>
         <spring.server>0.3.0</spring.server>
         <spring.core>2.7.4</spring.core>
+        <spring.openapi>1.7.0</spring.openapi>
         <gateway.version>3.0.4</gateway.version>
         <mybatis.version>2.2.2</mybatis.version>
         <shakeayaml.version>2.0</shakeayaml.version>
@@ -32,6 +33,10 @@
         <postgres.version>42.6.0</postgres.version>
         <liquibase.version>4.9.1</liquibase.version>
         <openfeign.version>3.1.8</openfeign.version>
+        <swagger.version>2.2.8</swagger.version>
+        <junit.jupiter.version>5.9.3</junit.jupiter.version>
+        <junit.platform.version>1.9.1</junit.platform.version>
+        <makeiteasy>4.0.1</makeiteasy>
     </properties>
 
     <dependencyManagement>
@@ -102,17 +107,20 @@
             <artifactId>spring-cloud-starter-openfeign</artifactId>
             <version>${openfeign.version}</version>
         </dependency>
-
-        <dependency>
-            <groupId>org.liquibase</groupId>
-            <artifactId>liquibase-core</artifactId>
-            <version>${liquibase.version}</version>
-        </dependency>
-
         <dependency>
             <groupId>org.mybatis.spring.boot</groupId>
             <artifactId>mybatis-spring-boot-starter</artifactId>
             <version>${mybatis.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springdoc</groupId>
+            <artifactId>springdoc-openapi-ui</artifactId>
+            <version>${spring.openapi}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.liquibase</groupId>
+            <artifactId>liquibase-core</artifactId>
+            <version>${liquibase.version}</version>
         </dependency>
 
         <dependency>
@@ -133,6 +141,26 @@
             <artifactId>lombok</artifactId>
             <version>${lombok.version}</version>
             <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-engine</artifactId>
+            <version>${junit.jupiter.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+            <version>${junit.jupiter.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.platform</groupId>
+            <artifactId>junit-platform-runner</artifactId>
+            <version>${junit.platform.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.natpryce</groupId>
+            <artifactId>make-it-easy</artifactId>
+            <version>${makeiteasy.version}</version>
         </dependency>
 
         <dependency>
