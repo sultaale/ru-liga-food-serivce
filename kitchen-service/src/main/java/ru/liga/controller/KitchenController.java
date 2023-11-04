@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.RestController;
 import ru.liga.dto.OrdersDTO;
 import ru.liga.service.KitchenService;
 
+import javax.validation.Valid;
+
 @Slf4j
 @Tag(name = "Restaurant", description = "Restaurant API")
 @RestController
@@ -27,17 +29,18 @@ public class KitchenController {
     @Operation(summary = "Изменить статус заказа на принят")
     @ApiResponses(value ={
             @ApiResponse(responseCode = "200", description = "Заказ найден, статус обновлен"),
-            @ApiResponse(responseCode = "404", description = "Заказ с указанным id ненайден")
+            @ApiResponse(responseCode = "404", description = "Заказ с указанным id не найден")
     })
     @PostMapping("/orders/{id}")
     public void updateOrder(@PathVariable long id) {
+        log.debug("Поиск заказа по id в OrderRepository");
         log.debug("Смена статуса заказа с id " + id);
         kitchenService.updateStatus(id);
     }
 
     @Operation(summary = "Передача заказа в курьерскую службу")
     @PostMapping("/orderCompleted/{orderId}")
-    public void completeOrder(@PathVariable Long orderId, @RequestParam String routingKey) {
+    public void completeOrder(@Valid @PathVariable Long orderId, @RequestParam String routingKey) {
         kitchenService.completeOrder(orderId, routingKey);
     }
 
@@ -45,7 +48,8 @@ public class KitchenController {
     @GetMapping("/orders")
     @ResponseBody
     public OrdersDTO getByStatus(@RequestParam String status) {
-       return kitchenService.getOrderByStatus(status);
+        log.info("Поиск заказа по статусу " + status);
+        return kitchenService.getOrderByStatus(status);
     }
 
 }

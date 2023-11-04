@@ -17,7 +17,7 @@ public class RoutingMQConfig {
         DirectExchange directExchange = new DirectExchange("directExchange");
 
         return new Declarables(queueDirectFirst, queueDirectSecond, directExchange,
-                BindingBuilder.bind(queueDirectFirst).to(directExchange).with("courier.first"),
+                BindingBuilder.bind(queueDirectFirst).to(directExchange).with("courier.take"),
                 BindingBuilder.bind(queueDirectSecond).to(directExchange).with("courier.second"));
     }
 }

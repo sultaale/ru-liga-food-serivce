@@ -1,20 +1,16 @@
 package ru.liga;
 
-import org.apache.ibatis.session.SqlSessionFactory;
 import org.modelmapper.ModelMapper;
-import org.postgresql.core.ConnectionFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
-import ru.liga.util.Converter;
-import ru.liga.util.LocalDateTimeTypeHandler;
-
-import java.sql.Connection;
+import ru.liga.utils.Converter;
 
 
 @SpringBootApplication
 public class OrderService {
 
+	
 	public static void main(String[] args) {
 		SpringApplication.run(OrderService.class, args);
 	}

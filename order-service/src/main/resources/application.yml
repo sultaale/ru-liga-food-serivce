@@ -1,3 +1,6 @@
+server:
+  port: 8080
+
 management:
   endpoints:
     web:
@@ -26,3 +29,9 @@ management:
                 datasource.password: 'postgres'
                 url: jdbc:postgresql://localhost:32768/postgres
                 username: 'postgres'
+
+              security:
+                oauth2:
+                  resourceserver:
+                    jwt:
+                      issuer-uri: http://localhost:9000

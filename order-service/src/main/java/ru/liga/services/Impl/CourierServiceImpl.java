@@ -11,10 +11,11 @@ import ru.liga.models.Courier;
 import ru.liga.models.enums.OrderStatus;
 import ru.liga.repository.CourierRepository;
 import ru.liga.services.CourierService;
-import ru.liga.util.Converter;
+import ru.liga.utils.Converter;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Locale;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
@@ -56,11 +57,12 @@ public class CourierServiceImpl implements CourierService {
     public void updateStatus(Long id, StatusUpdateDTO statusUpdateDTO) {
         Courier courier = courierRepository.findById(id)
                 .orElseThrow(() -> new CourierNotFoundException("Courier not found by id " + id));
+
         String status = statusUpdateDTO.getStatus();
         Optional<OrderStatus> newStatus = Arrays.stream(OrderStatus.values())
-                .filter(s -> s.name().equalsIgnoreCase(status)).findAny();
+                .filter(s -> s.toString().equalsIgnoreCase(status)).findAny();
         if (newStatus.isPresent()) {
-            courier.setStatus(status);
+            courier.setStatus(status.toUpperCase(Locale.ROOT));
             courierRepository.save(courier);
         }
     }

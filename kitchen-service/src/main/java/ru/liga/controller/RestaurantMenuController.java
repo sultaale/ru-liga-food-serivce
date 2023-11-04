@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import ru.liga.dto.MenuCreationDTO;
+import ru.liga.dto.RestaurantMenuDTO;
 import ru.liga.models.RestaurantMenuItem;
 import ru.liga.service.RestaurantMenuService;
 
@@ -30,14 +31,15 @@ public class RestaurantMenuController {
 
      @Operation(summary = "Получить меню по id")
      @GetMapping("/{id}")
-     public RestaurantMenuItem getById(@PathVariable Long id) {
+     public RestaurantMenuDTO getById(@PathVariable Long id) {
          return restaurantMenuService.getById(id);
      }
 
      @Operation(summary = "Изменить цену блюда")
      @PutMapping("/{id}")
-     public RestaurantMenuItem updatePrice(@PathVariable Long id, @RequestParam double price) {
-         return restaurantMenuService.updatePrice(id, price);
+     public void updatePrice(@PathVariable Long id, @RequestParam Double price) {
+         log.warn("Процесс обновления цены");
+         restaurantMenuService.updatePrice(id, price);
      }
 
      @Operation(summary = "Удалить меню")

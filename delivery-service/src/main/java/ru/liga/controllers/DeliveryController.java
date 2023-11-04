@@ -6,9 +6,13 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import ru.liga.dto.CourierDTO;
+import ru.liga.dto.DeliveriesDTO;
 import ru.liga.dto.StatusUpdateDTO;
+import ru.liga.models.Courier;
+import ru.liga.models.Order;
 import ru.liga.services.CourierService;
 
 
@@ -32,12 +36,22 @@ public class DeliveryController {
 
     
     @PostMapping("/couriers/status/{id}")
-    public CourierDTO updateStatus(@PathVariable Long id, String statusUpdateDTO) {
+    public Order updateStatus(@PathVariable Long id, @RequestBody StatusUpdateDTO statusUpdateDTO) {
        return courierService.updateStatus(id, statusUpdateDTO);
     }
 
     @PostMapping("/couriers/orders/status")
     public void updateStatus(@RequestBody StatusUpdateDTO statusUpdateDTO) {
          courierService.acceptOrder(statusUpdateDTO);
+    }
+
+    @GetMapping("/deliveries")
+    public DeliveriesDTO findAllByStatus(@RequestParam String status) {
+        return courierService.findAllDeliveriesByStatus(status);
+    }
+
+    @PostMapping("/courier")
+    public Courier findCourier(@RequestBody StatusUpdateDTO statusUpdateDTO) {
+        return courierService.findCourier(statusUpdateDTO);
     }
 }
