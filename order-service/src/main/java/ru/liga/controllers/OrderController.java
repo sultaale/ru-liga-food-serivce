@@ -1,5 +1,6 @@
 package ru.liga.controllers;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
@@ -21,8 +22,11 @@ import ru.liga.dto.OrdersDTO;
 import ru.liga.services.OrderItemService;
 import ru.liga.services.OrderService;
 
+import javax.validation.Valid;
+
 
 @Slf4j
+@Tag(name = "API для управления заказом")
 @RequiredArgsConstructor
 @RestController
 @RequestMapping("/api/v1/orders")
@@ -56,6 +60,11 @@ public class OrderController {
     @PostMapping("/items/orders/{orderId}")
     public Long createOrderItem(@PathVariable Long orderId, @RequestBody OrderItemForOrderCreationDTO orderItemForOrderCreationDTO) {
         return orderItemService.addOrderItem(orderId, orderItemForOrderCreationDTO);
+    }
+
+    @PostMapping("/notifications/{orderId}")
+    public void notifyRestaurant(@PathVariable @Valid Long orderId) {
+        orderService.sendOrderNotification(orderId);
     }
 
 }

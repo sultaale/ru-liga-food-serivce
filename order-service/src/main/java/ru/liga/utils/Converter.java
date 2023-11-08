@@ -5,9 +5,11 @@ import org.modelmapper.ModelMapper;
 import ru.liga.dto.CourierDTO;
 import ru.liga.dto.CustomerDTO;
 import ru.liga.dto.OrderItemDTO;
+import ru.liga.dto.RestaurantDTO;
 import ru.liga.dto.RestaurantMenuItemInOrderItemDTO;
 import ru.liga.models.Courier;
 import ru.liga.models.Customer;
+import ru.liga.models.Order;
 import ru.liga.models.OrderItem;
 
 @RequiredArgsConstructor
@@ -55,5 +57,9 @@ public class Converter {
         courier.setStatus(courierDTO.getStatus());
         courier.setCoordinates(courierDTO.getCoordinates());
         return courier;
+     }
+
+     public RestaurantDTO toDto(Order order) {
+        return modelMapper.map(order.getRestaurant(), RestaurantDTO.class);
      }
 }

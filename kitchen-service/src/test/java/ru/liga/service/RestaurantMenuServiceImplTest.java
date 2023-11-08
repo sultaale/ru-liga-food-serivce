@@ -9,7 +9,10 @@ import ru.liga.exceptions.RestaurantNotFoundException;
 import ru.liga.repository.RestaurantMenuRepository;
 import ru.liga.service.Impl.RestaurantMenuServiceImpl;
 
+import java.util.Optional;
+
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.when;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -27,9 +30,17 @@ public class RestaurantMenuServiceImplTest {
                 .isInstanceOf(RestaurantNotFoundException.class);
     }
 
+    @Test
     public void getById_whenIdCorrect_thenReturnRestaurantMenu() {
-        
-//        when(restaurantMenuRepository.findById(1L)).thenReturn(restaurantMenuRepository.findById(1L).get())
+       when(restaurantMenuRepository.findById(1L)).thenReturn(Optional.empty());
+
+       assertEquals(Optional.empty(), restaurantMenuRepository.findById(1L));
     }
-    
+
+    @Test
+    public void getByName_whenNameNotFound_throwsException() {
+        when(restaurantMenuRepository.findByName("Оладьи")).thenThrow(new RestaurantNotFoundException("Не найден"));
+
+        assertThatThrownBy(() -> restaurantMenuService.getByName("Оладьи")).isInstanceOf(RestaurantNotFoundException.class);
+    }
 }

@@ -2,6 +2,7 @@ package ru.liga.services.Impl;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.liga.batisMapper.OrderItemMapper;
@@ -48,9 +49,8 @@ public class OrderServiceImpl implements OrderService {
     private final RestaurantService restaurantService;
     private final RestaurantMenuRepository restaurantMenuRepository;
     private final OrderItemRepository orderItemRepository;
-    private final CustomerService customerService;
     private final Converter converter;
-
+    private final RabbitTemplate rabbitTemplate;
 
     @Override
     public Optional<Order> findByRestaurantId(Long id) {
@@ -62,8 +62,7 @@ public class OrderServiceImpl implements OrderService {
         Order order = orderMapper.getById(id).orElseThrow(()-> new OrderNotFoundException(id));
         OrderDTO orderDTO = new OrderDTO();
         orderDTO.setId(order.getId());
-        RestaurantDTO restaurantDTO = new RestaurantDTO();
-        restaurantDTO.setName(order.getRestaurant().getName());
+        RestaurantDTO restaurantDTO = converter.toDto(order);
         orderDTO.setRestaurant(restaurantDTO);
         orderDTO.setTimestamp(order.getTimestamp());
         List<OrderItem> orderItems = orderItemMapper.getByOrderId(id);
@@ -155,5 +154,10 @@ public class OrderServiceImpl implements OrderService {
         responseDTO.setTime(LocalDateTime.now().plusHours(1));
 
         return responseDTO;
+    }
+
+    public void sendOrderNotification(Long orderId) {
+        rabbitTemplate.convertAndSend("directExchange", "restaurants", orderId.toString());
+        log.info("Send notification about new order");
     }
 }

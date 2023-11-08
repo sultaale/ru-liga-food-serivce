@@ -17,5 +17,5 @@ public interface OrderService {
     List<Long> getByStatus(String status);
     OrderCreationResponseDTO createOrder(Long customerId,OrderCreationDTO orderCreationDTO);
     OrdersDTO getAll();
-
+    void sendOrderNotification(Long orderId);
 }

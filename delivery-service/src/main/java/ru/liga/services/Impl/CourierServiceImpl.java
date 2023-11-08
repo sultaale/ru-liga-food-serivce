@@ -105,7 +105,6 @@ public class CourierServiceImpl implements CourierService {
         Long orderId = statusUpdateDTO.getId();
         Order order = orderRepository.findById(orderId)
                 .orElseThrow(()->new OrderNotFoundException(orderId));
-
         
         OrderStatus orderStatus = convertToOrderStatus(statusUpdateDTO.getStatus());
         order.setStatus(orderStatus);
@@ -162,12 +161,14 @@ public class CourierServiceImpl implements CourierService {
         for (Courier courier: couriers) {
             Long id = courier.getId();
             double distance = DistanceCalculator.calculateDistance(courier.getCoordinates(), restaurant.getAddress());
-            log.info("Courier " + id + " distance " + distance);
+            log.info("Courier with id " + id + " distance " + distance);
             setOfDistance.put(id, distance);
         }
 
-        if (setOfDistance.isEmpty())
+        if (setOfDistance.isEmpty()) {
+            log.warn("It seems all couriers are busy now");
             throw new DeliveryException("Unfortunately, all couriers are busy now, please try later.");
+        }
 
         Optional<Map.Entry<Long,Double>> courierId =
                 setOfDistance.entrySet().stream()
@@ -181,7 +182,6 @@ public class CourierServiceImpl implements CourierService {
         courierRepository.save(courier);
         orderRepository.save(order);
         return courier;
-
     }
 
     public OrderStatus convertToOrderStatus(String status) {
